@@ -16,61 +16,6 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" />
-
-  <!-- Custom 3D Floating Hero Styles -->
-  <style>
-    .hero-flex-wrapper {
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: center;
-      gap: 2.5rem;
-    }
-    @media (min-width: 968px) {
-      .hero-flex-wrapper {
-        grid-template-columns: 1.15fr 0.85fr;
-        text-align: left;
-      }
-      .hero-flex-wrapper .hero-content,
-      .hero-content {
-        text-align: left;
-      }
-      .hero-flex-wrapper .gateway-grid {
-        justify-content: flex-start;
-      }
-    }
-    .hero-image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      perspective: 1000px;
-      width: 100%;
-    }
-    .floating-3d-img {
-      width: 100%;
-      max-width: 450px;
-      height: auto;
-      filter: drop-shadow(0px 25px 35px rgba(0, 180, 255, 0.25));
-      animation: float3D 4s ease-in-out infinite;
-      transition: transform 0.4s ease, filter 0.4s ease;
-      cursor: pointer;
-    }
-    .floating-3d-img:hover {
-      animation-play-state: paused;
-      transform: scale(1.04) rotateY(8deg) rotateX(4deg);
-      filter: drop-shadow(0px 30px 45px rgba(255, 200, 0, 0.35));
-    }
-    @keyframes float3D {
-      0% {
-        transform: translateY(0px) rotateZ(0deg);
-      }
-      50% {
-        transform: translateY(-15px) rotateZ(1.5deg);
-      }
-      100% {
-        transform: translateY(0px) rotateZ(0deg);
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="page-transition"></div>
@@ -103,7 +48,8 @@
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
+
+ <!-- Mobile Navigation Drawer -->
   <div id="mobileDrawer" class="mobile-drawer">
     <a href="index.html" class="mobile-nav-link active">Home <i class="fa-solid fa-chevron-right"></i></a>
     <a href="gaming.html" class="mobile-nav-link">PS5 Gaming <i class="fa-solid fa-chevron-right"></i></a>
@@ -115,61 +61,50 @@
   </div>
 
   <main>
-    <!-- Hero Section with 3D Visual & New Description -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg-grid"></div>
       <div class="container hero-content">
-        <div class="hero-flex-wrapper">
-          
-          <!-- Left Side: Aluth Description & Gateway Cards -->
-          <div>
-            <div class="eyebrow">
-              <i class="fa-solid fa-crown"></i> Welcome to Luxury Entertainment
+        <div class="eyebrow">
+          <i class="fa-solid fa-location-dot"></i> Badulla's Premier Entertainment Lounge
+        </div>
+        <h1 class="hero-title">
+          BIG SCREEN,
+          <span>BIGGER MOMENTS</span>
+        </h1>
+        <p class="hero-tagline">Play Game Your Way</p>
+        <p class="hero-description">
+          Step into an exclusive private sanctuary engineered for next-gen PlayStation 5 immersion,
+          ultra-crisp cinema screenings, and unforgettable VIP celebrations in the heart of Badulla.
+        </p>
+
+        <!-- Two Interactive Gateway Cards -->
+        <div class="gateway-grid">
+          <a href="gaming.html" class="gateway-card gaming">
+            <div>
+              <div class="gateway-icon">
+                <i class="fa-solid fa-gamepad"></i>
+              </div>
+              <h3>Explore Gaming</h3>
+              <p>Next-gen PS5 consoles, DualSense haptic controllers, blockbuster AAA titles, and flexible solo or squad packages.</p>
             </div>
-            <h1 class="hero-title" style="font-size: clamp(2rem, 5vw, 3.8rem); margin-bottom: 1rem;">
-              NEXT-GEN GAMING &amp; 
-              <span>PRIVATE CINEMA</span>
-            </h1>
-            <p class="hero-tagline">Play. Watch. Celebrate Like Royalty.</p>
-            <p class="hero-description" style="margin-bottom: 2rem;">
-              Immerse yourself in Badulla's ultimate entertainment sanctuary. Featuring high-end PlayStation 5 setups with haptic feedback controllers, cinematic private screening rooms with immersive surround sound, and exclusive VIP party experiences tailored just for your squad.
-            </p>
+            <span class="gateway-action">
+              Enter Gaming Arena <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </a>
 
-            <!-- Two Interactive Gateway Cards -->
-            <div class="gateway-grid">
-              <a href="gaming.html" class="gateway-card gaming">
-                <div>
-                  <div class="gateway-icon">
-                    <i class="fa-solid fa-gamepad"></i>
-                  </div>
-                  <h3>Explore Gaming</h3>
-                  <p>Next-gen PS5 consoles, DualSense haptic controllers, blockbuster AAA titles, and flexible solo or squad packages.</p>
-                </div>
-                <span class="gateway-action">
-                  Enter Gaming Arena <i class="fa-solid fa-arrow-right"></i>
-                </span>
-              </a>
-
-              <a href="movies.html" class="gateway-card movies">
-                <div>
-                  <div class="gateway-icon">
-                    <i class="fa-solid fa-film"></i>
-                  </div>
-                  <h3>Explore Movies</h3>
-                  <p>Private 2.5-hour theater screenings with surround acoustics, plush seating, and custom movie download requests.</p>
-                </div>
-                <span class="gateway-action">
-                  Enter Private Cinema <i class="fa-solid fa-arrow-right"></i>
-                </span>
-              </a>
+          <a href="movies.html" class="gateway-card movies">
+            <div>
+              <div class="gateway-icon">
+                <i class="fa-solid fa-film"></i>
+              </div>
+              <h3>Explore Movies</h3>
+              <p>Private 2.5-hour theater screenings with surround acoustics, plush seating, and custom movie download requests.</p>
             </div>
-          </div>
-
-          <!-- Right Side: 3D Floating Visual (0001.png) -->
-          <div class="hero-image-container">
-            <img src="0001.png" alt="RA Royal Arena Gaming and Cinema 3D Concept" class="floating-3d-img" />
-          </div>
-
+            <span class="gateway-action">
+              Enter Private Cinema <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </a>
         </div>
       </div>
     </section>
