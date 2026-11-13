@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservations | RA Royal Arena - Badulla</title>
+  <meta name="description" content="Book your PS5 gaming session, private movie screening, or VIP birthday party directly via WhatsApp at RA Royal Arena, Badulla." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="page-transition"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
+        <div class="brand-text">
+          <span class="brand-title">RA Royal Arena</span>
+          <span class="brand-subtitle">Gaming &amp; Movies • Badulla</span>
+        </div>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="gaming.html" class="nav-link">Gaming</a>
+        <a href="movies.html" class="nav-link">Movies</a>
+        <a href="booking.html" class="nav-link active">Reservations</a>
+      </nav>
+
+      <a href="tel:+94706821331" class="btn btn-outline btn-sm nav-cta">
+        <i class="fa-solid fa-phone"></i> +94 70 682 1331
+      </a>
+
+      <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobileDrawer" class="mobile-drawer">
+    <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+    <a href="gaming.html" class="mobile-nav-link">PS5 Gaming <i class="fa-solid fa-chevron-right"></i></a>
+    <a href="movies.html" class="mobile-nav-link">Private Movies <i class="fa-solid fa-chevron-right"></i></a>
+    <a href="booking.html" class="mobile-nav-link active">Book Reservation <i class="fa-solid fa-chevron-right"></i></a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Confirmation
+          </div>
+          <h1 class="section-title">Reserve Your Arena Slot</h1>
+          <p class="section-subtitle">
+            Complete your preferences below. Submitting sends your formatted reservation directly to our Badulla concierge via WhatsApp.
+          </p>
+        </div>
+
+        <div class="booking-layout">
+          <!-- Reservation Form -->
+          <div class="glass-panel booking-card">
+            <form id="reservationForm" novalidate>
+              <div class="form-grid form-grid-2" style="margin-bottom: 1.25rem;">
+                <div class="form-group">
+                  <label for="fullName" class="form-label">
+                    <i class="fa-solid fa-user"></i> Full Name
+                  </label>
+                  <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="mobileNumber" class="form-label">
+                    <i class="fa-solid fa-mobile-screen"></i> Mobile Number
+                  </label>
+                  <input type="tel" id="mobileNumber" class="form-control" placeholder="e.g., 07X XXX XXXX" required />
+                </div>
+              </div>
+
+              <div class="form-grid form-grid-2" style="margin-bottom: 1.25rem;">
+                <div class="form-group">
+                  <label for="serviceType" class="form-label">
+                    <i class="fa-solid fa-layer-group"></i> Service Type
+                  </label>
+                  <select id="serviceType" class="form-control">
+                    <option value="Gaming Session">Gaming Session</option>
+                    <option value="Movie Package">Movie Package</option>
+                    <option value="Birthday Package">Birthday Package</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="peopleCount" class="form-label">
+                    <i class="fa-solid fa-users"></i> Number of People
+                  </label>
+                  <select id="peopleCount" class="form-control"></select>
+                </div>
+              </div>
+
+              <div class="form-grid" style="margin-bottom: 1.25rem;">
+                <div class="form-group" id="durationGroup">
+                  <label for="duration" class="form-label">
+                    <i class="fa-regular fa-clock"></i> Package Duration
+                  </label>
+                  <select id="duration" class="form-control"></select>
+                </div>
+
+                <div class="form-group">
+                  <label for="selectionTitle" id="selectionTitleLabel" class="form-label">
+                    <i class="fa-solid fa-gamepad"></i> Preferred Game / Movie / Details
+                  </label>
+                  <input type="text" id="selectionTitle" class="form-control" placeholder="Specify your game, movie, or custom request" />
+                </div>
+              </div>
+
+              <div class="form-grid form-grid-2" style="margin-bottom: 1.25rem;">
+                <div class="form-group">
+                  <label for="preferredDate" class="form-label">
+                    <i class="fa-regular fa-calendar"></i> Preferred Date
+                  </label>
+                  <input type="date" id="preferredDate" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="timeSlot" class="form-label">
+                    <i class="fa-solid fa-clock"></i> Preferred Time Slot
+                  </label>
+                  <select id="timeSlot" class="form-control" required>
+                    <option value="10:00 AM - 12:30 PM">10:00 AM - 12:30 PM</option>
+                    <option value="12:30 PM - 03:00 PM">12:30 PM - 03:00 PM</option>
+                    <option value="03:00 PM - 05:30 PM">03:00 PM - 05:30 PM</option>
+                    <option value="05:30 PM - 08:00 PM">05:30 PM - 08:00 PM</option>
+                    <option value="08:00 PM - 10:30 PM">08:00 PM - 10:30 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label for="additionalNotes" class="form-label">
+                  <i class="fa-regular fa-comment-dots"></i> Special Requests (Optional)
+                </label>
+                <textarea id="additionalNotes" class="form-control" placeholder="Any custom movie download request, controller count, or birthday decor theme..."></textarea>
+              </div>
+
+              <p id="formError" class="form-error" style="margin-bottom: 1rem;">
+                <i class="fa-solid fa-circle-exclamation"></i> Please fill in your Full Name, Mobile Number, and Preferred Date before submitting.
+              </p>
+
+              <button type="submit" class="btn btn-gold" style="width: 100%; font-size: 1.02rem;">
+                <i class="fa-brands fa-whatsapp"></i> Confirm &amp; Send via WhatsApp
+              </button>
+            </form>
+          </div>
+
+          <!-- Concierge Information Panel -->
+          <aside class="glass-panel summary-card">
+            <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Arena Concierge</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.25rem;">
+              Private slots are allocated on a first-come basis. Submitting opens WhatsApp with your complete booking ticket pre-filled.
+            </p>
+
+            <div class="summary-row">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong style="display: block; font-size: 0.92rem;">Location</strong>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">RA Royal Arena, Badulla</span>
+              </div>
+            </div>
+
+            <div class="summary-row">
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <strong style="display: block; font-size: 0.92rem;">Direct Booking Hotline</strong>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">+94 70 682 1331</span>
+              </div>
+            </div>
+
+            <div class="summary-row">
+              <i class="fa-solid fa-cake-candles"></i>
+              <div>
+                <strong style="display: block; font-size: 0.92rem;">Birthday Package Highlight</strong>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">Rs. 5,500 — Guitar, JBL Karaoke, PS5 &amp; Pro Decor</span>
+              </div>
+            </div>
+
+            <div class="summary-row">
+              <i class="fa-solid fa-cloud-arrow-down"></i>
+              <div>
+                <strong style="display: block; font-size: 0.92rem;">Custom Movie Requests</strong>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">Book at least 12 hours ahead for custom movie downloads.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        &copy; 2025 <strong>RA Royal Arena (Gaming &amp; Movies)</strong> — Badulla.
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="gaming.html">PS5 Gaming</a>
+        <a href="movies.html">Private Cinema</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Component (Direct WhatsApp Chat on Booking Page) -->
+  <a href="https://wa.me/94706821331" target="_blank" rel="noopener noreferrer" class="floating-action" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>WhatsApp</span>
+  </a>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
