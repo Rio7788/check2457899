@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RA ROYAL ARENA - LUXURY DESIGN SYSTEM (MOBILE-FIRST HARDENED)
+   ROYAL ARENA - LUXURY DESIGN SYSTEM (MOBILE-FIRST HARDENED)
    Palette: Deep Obsidian (#050505), Midnight Navy (#0B0F19),
             Luxury Gold (#D4AF37), Electric Neon Blue (#00D2FF)
    ========================================================================== */
@@ -61,6 +61,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
@@ -269,6 +270,7 @@ ul {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  touch-action: manipulation;
   transition: var(--transition-fast);
 }
 
@@ -349,6 +351,7 @@ ul {
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   cursor: pointer;
+  touch-action: manipulation;
   transition: all var(--transition-fast);
   border: 1px solid transparent;
   text-align: center;
@@ -478,13 +481,13 @@ ul {
 /* Hero Specific */
 .hero {
   position: relative;
-  padding: 2.5rem 0 3rem;
+  padding: 1.25rem 0 2.75rem;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .hero {
-    padding: 6rem 0 5rem;
+    padding: 3.5rem 0 5rem;
   }
 }
 
@@ -1403,5 +1406,114 @@ textarea.form-control {
   100% {
     transform: scale(1.16);
     opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   HERO FLOATING 3D SHOWCASE
+   ========================================================================== */
+.hero-floating-stage {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 1.15rem;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .hero-floating-stage {
+    width: 330px;
+    height: 330px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.hero-stage-glow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 30%, rgba(212, 175, 55, 0.24), transparent 55%),
+              radial-gradient(circle at 30% 60%, rgba(0, 210, 255, 0.22), transparent 55%);
+  filter: blur(28px);
+  z-index: 0;
+  animation: glowPulse 6s ease-in-out infinite alternate;
+}
+
+.float-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  will-change: transform;
+}
+
+.layer-crown {
+  z-index: 3;
+  transform-origin: 65% 24%;
+  filter: drop-shadow(0 12px 24px rgba(212, 175, 55, 0.25));
+  animation: floatCrown 5.2s ease-in-out infinite;
+}
+
+.layer-controller {
+  z-index: 2;
+  transform-origin: 28% 52%;
+  filter: drop-shadow(0 14px 26px rgba(0, 210, 255, 0.22));
+  animation: floatController 6s ease-in-out infinite;
+}
+
+.layer-popcorn {
+  z-index: 1;
+  transform-origin: 68% 68%;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.75));
+  animation: floatPopcorn 5.6s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(2deg);
+  }
+}
+
+@keyframes floatController {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -13px, 0) rotate(-2deg);
+  }
+}
+
+@keyframes floatPopcorn {
+  0%, 100% {
+    transform: translate3d(0, -4px, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, 9px, 0) rotate(1.5deg);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer-crown,
+  .layer-controller,
+  .layer-popcorn,
+  .hero-stage-glow {
+    animation: none;
   }
 }
