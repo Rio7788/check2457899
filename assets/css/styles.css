@@ -1509,11 +1509,113 @@ textarea.form-control {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .layer-crown,
-  .layer-controller,
-  .layer-popcorn,
-  .hero-stage-glow {
-    animation: none;
+/* ==========================================================================
+   DESKTOP 2-COLUMN SPLIT HERO & PC FLOATING FIX (960px+)
+   (Mobile layout stays 100% unchanged)
+   ========================================================================== */
+@media (min-width: 960px) {
+  .hero {
+    padding: 3rem 0 4rem;
+    min-height: calc(100vh - 76px);
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    max-width: 1240px;
+    display: grid;
+    grid-template-columns: 1.18fr 0.82fr;
+    gap: 2.5rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .hero-text-col {
+    order: 1;
+  }
+
+  .hero-visual-col {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 4.4vw, 4.1rem);
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-description {
+    margin: 0 0 1.75rem;
+    font-size: 0.98rem;
+    max-width: 560px;
+  }
+
+  .gateway-grid {
+    margin: 0;
+    max-width: 100%;
+    gap: 1.25rem;
+  }
+
+  .gateway-card {
+    padding: 1.5rem 1.35rem;
+    min-height: 205px;
+  }
+
+  .gateway-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .gateway-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .gateway-card p {
+    font-size: 0.86rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .hero-floating-stage {
+    width: 430px;
+    height: 430px;
+    margin: 0;
+  }
+}
+
+/* Enhanced visible float motion for both Mobile & PC */
+@keyframes floatCrown {
+  0%, 100% {
+    transform: translate3d(0, 4px, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes floatController {
+  0%, 100% {
+    transform: translate3d(0, 5px, 0) rotate(1deg);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) rotate(-2.5deg);
+  }
+}
+
+@keyframes floatPopcorn {
+  0%, 100% {
+    transform: translate3d(0, -6px, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, 12px, 0) rotate(2deg);
   }
 }
