@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initPageTransitions();
   initBookingForm();
+  initHeroParallax();
+
 });
 
 /* --------------------------------------------------------------------------
@@ -186,5 +188,18 @@ function initBookingForm() {
     const whatsappUrl = `https://wa.me/94706821331?text=${encodedText}`;
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  });
+}
+/* --------------------------------------------------------------------------
+   4. Desktop Hero Floating Parallax
+   -------------------------------------------------------------------------- */
+function initHeroParallax() {
+  const stage = document.querySelector(".hero-floating-stage");
+  if (!stage || !window.matchMedia("(pointer: fine)").matches) return;
+
+  window.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 14;
+    const y = (e.clientY / window.innerHeight - 0.5) * 14;
+    stage.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   });
 }
