@@ -1482,9 +1482,86 @@ textarea.form-control {
   }
 }
 
+/* Enhanced visible float motion for both Mobile & PC */
+@keyframes floatCrown {
+  0%, 100% {
+    transform: translate3d(0, 4px, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes floatController {
+  0%, 100% {
+    transform: translate3d(0, 5px, 0) rotate(1deg);
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) rotate(-2.5deg);
+  }
+}
+
+@keyframes floatPopcorn {
+  0%, 100% {
+    transform: translate3d(0, -6px, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate3d(0, 12px, 0) rotate(2deg);
+  }
+}
+
+/* ==========================================================================
+   MOBILE-ONLY HERO REORDER (Under 960px — PC View Unchanged)
+   Order: Title -> Tagline -> Floating 3D Showcase -> Description -> Cards
+   ========================================================================== */
+@media (max-width: 959px) {
+  .hero {
+    padding: 2rem 0 2.75rem;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-text-col {
+    display: contents;
+  }
+
+  .hero-title {
+    order: 1;
+    width: 100%;
+  }
+
+  .hero-tagline {
+    order: 2;
+    width: 100%;
+    margin-bottom: 1.15rem;
+  }
+
+  .hero-visual-col {
+    order: 3;
+    width: 100%;
+  }
+
+  .hero-floating-stage {
+    margin: 0.25rem auto 1.35rem;
+  }
+
+  .hero-description {
+    order: 4;
+    width: 100%;
+  }
+
+  .gateway-grid {
+    order: 5;
+    width: 100%;
+  }
+}
+
 /* ==========================================================================
    DESKTOP 2-COLUMN SPLIT HERO & PC FLOATING FIX (960px+)
-   (Mobile layout stays 100% unchanged)
    ========================================================================== */
 @media (min-width: 960px) {
   .hero {
@@ -1562,34 +1639,6 @@ textarea.form-control {
     width: 430px;
     height: 430px;
     margin: 0;
-  }
-}
-
-/* Enhanced visible float motion for both Mobile & PC */
-@keyframes floatCrown {
-  0%, 100% {
-    transform: translate3d(0, 4px, 0) rotate(-1deg);
-  }
-  50% {
-    transform: translate3d(0, -14px, 0) rotate(2.5deg);
-  }
-}
-
-@keyframes floatController {
-  0%, 100% {
-    transform: translate3d(0, 5px, 0) rotate(1deg);
-  }
-  50% {
-    transform: translate3d(0, -16px, 0) rotate(-2.5deg);
-  }
-}
-
-@keyframes floatPopcorn {
-  0%, 100% {
-    transform: translate3d(0, -6px, 0) rotate(-1deg);
-  }
-  50% {
-    transform: translate3d(0, 12px, 0) rotate(2deg);
   }
 }
 
@@ -1786,55 +1835,4 @@ textarea.form-control {
 
 .drop-dismiss-link:hover {
   color: var(--text-primary);
-}
-
-
-/* ==========================================================================
-   MOBILE-ONLY HERO REORDER (Under 960px — PC View Unchanged)
-   Order: Title -> Tagline -> Floating 3D Showcase -> Description -> Cards
-   ========================================================================== */
-@media (max-width: 959px) {
-  .hero {
-    padding: 2rem 0 2.75rem;
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-text-col {
-    display: contents;
-  }
-
-  .hero-title {
-    order: 1;
-    width: 100%;
-  }
-
-  .hero-tagline {
-    order: 2;
-    width: 100%;
-    margin-bottom: 1.15rem;
-  }
-
-  .hero-visual-col {
-    order: 3;
-    width: 100%;
-  }
-
-  .hero-floating-stage {
-    margin: 0.25rem auto 1.35rem;
-  }
-
-  .hero-description {
-    order: 4;
-    width: 100%;
-  }
-
-  .gateway-grid {
-    order: 5;
-    width: 100%;
-  }
 }
