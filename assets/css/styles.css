@@ -1619,3 +1619,189 @@ textarea.form-control {
     transform: translate3d(0, 12px, 0) rotate(2deg);
   }
 }
+/* ==========================================================================
+   NEW RELEASE ENTRY POPUP MODAL
+   ========================================================================== */
+.drop-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(5, 5, 5, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.15rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.drop-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drop-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(165deg, rgba(15, 22, 38, 0.96) 0%, rgba(5, 5, 5, 0.99) 100%);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.85), 0 0 42px rgba(0, 210, 255, 0.16);
+  transform: translateY(22px) scale(0.95);
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drop-modal-backdrop.open .drop-modal {
+  transform: translateY(0) scale(1);
+}
+
+.drop-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(5, 5, 5, 0.72);
+  color: #ffffff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all var(--transition-fast);
+}
+
+.drop-close:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  transform: rotate(90deg);
+}
+
+.drop-cover {
+  position: relative;
+  height: 185px;
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(0, 210, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(212, 175, 55, 0.32), transparent 55%),
+    linear-gradient(135deg, #0b0f19 0%, #3b0764 52%, #0e7490 100%);
+}
+
+.drop-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.drop-cover-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.28) 60%, rgba(5, 5, 5, 0.45) 100%);
+}
+
+.drop-watermark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 4.4rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(0, 210, 255, 0.32), rgba(212, 175, 55, 0.35));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+.drop-cover-top,
+.drop-cover-bottom {
+  position: relative;
+  z-index: 2;
+}
+
+.drop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: rgba(5, 5, 5, 0.72);
+  border: 1px solid var(--border-neon);
+  color: var(--neon-blue);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.drop-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+}
+
+.drop-body {
+  padding: 1.35rem 1.4rem 1.5rem;
+  text-align: center;
+}
+
+.drop-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  margin-bottom: 0.45rem;
+  color: #ffffff;
+}
+
+.drop-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.35rem;
+}
+
+.drop-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.drop-dismiss-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.4rem;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.drop-dismiss-link:hover {
+  color: var(--text-primary);
+}
