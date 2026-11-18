@@ -1471,33 +1471,6 @@ textarea.form-control {
   animation: floatPopcorn 5.6s ease-in-out infinite;
 }
 
-@keyframes floatCrown {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(0, -10px, 0) rotate(2deg);
-  }
-}
-
-@keyframes floatController {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(0, -13px, 0) rotate(-2deg);
-  }
-}
-
-@keyframes floatPopcorn {
-  0%, 100% {
-    transform: translate3d(0, -4px, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(0, 9px, 0) rotate(1.5deg);
-  }
-}
-
 @keyframes glowPulse {
   0% {
     opacity: 0.7;
@@ -1619,8 +1592,9 @@ textarea.form-control {
     transform: translate3d(0, 12px, 0) rotate(2deg);
   }
 }
+
 /* ==========================================================================
-   NEW RELEASE ENTRY POPUP MODAL
+   NEW RELEASE ENTRY POPUP MODAL (4:3 COVER)
    ========================================================================== */
 .drop-modal-backdrop {
   position: fixed;
@@ -1646,9 +1620,10 @@ textarea.form-control {
 .drop-modal {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
+  max-height: 92dvh;
+  overflow-y: auto;
   border-radius: 22px;
-  overflow: hidden;
   background: linear-gradient(165deg, rgba(15, 22, 38, 0.96) 0%, rgba(5, 5, 5, 0.99) 100%);
   border: 1px solid var(--border-gold);
   box-shadow: 0 28px 65px rgba(0, 0, 0, 0.85), 0 0 42px rgba(0, 210, 255, 0.16);
@@ -1688,7 +1663,8 @@ textarea.form-control {
 
 .drop-cover {
   position: relative;
-  height: 185px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   padding: 1.15rem;
   display: flex;
   flex-direction: column;
@@ -1706,6 +1682,7 @@ textarea.form-control {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   z-index: 0;
 }
 
@@ -1713,7 +1690,12 @@ textarea.form-control {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.28) 60%, rgba(5, 5, 5, 0.45) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 5, 0.92) 0%,
+    rgba(5, 5, 5, 0.08) 45%,
+    rgba(5, 5, 5, 0.35) 100%
+  );
 }
 
 .drop-watermark {
