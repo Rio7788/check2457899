@@ -10,16 +10,15 @@ const NEW_DROP_CONFIG = {
   badge: "NOW AVAILABLE ON PS5",
   tag: "NEW ARRIVAL",
   title: "Grand Theft Auto VI",
-  highlight: "GTA 6",             // Large stylized watermark behind the banner (if no custom image is used)
+  highlight: "GTA 6",             // Fallback stylized watermark if image fails to load
   subtitle: "Experience Vice City in ultra-crisp 4K HDR on PlayStation 5 at Royal Arena Badulla.",
 
   serviceType: "Gaming Session",  // Use "Gaming Session" or "Movie Package"
   bookingTitle: "Grand Theft Auto VI (GTA 6)",
   ctaText: "Reserve GTA 6 Slot",
 
-  // Optional: Add a poster image path like "assets/images/gta6.jpg"
-  // Leave empty ("") to use the built-in Vice Neon luxury cover art
-  image: ""
+  // Extracted direct image URL (For permanent reliability, save the image locally as "assets/images/gta6.png")
+  image: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d926ed8e-59a5-4958-a4cb-49012734adeb/dgjstdu-e392f36e-20c3-494c-9919-2178f633f7b4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9kOTI2ZWQ4ZS01OWE1LTQ5NTgtYTRjYi00OTAxMjczNGFkZWIvZGdqc3RkdS1lMzkyZjM2ZS0yMGMzLTQ5NGMtOTkxOS0yMTc4ZjYzM2Y3YjQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.17YKJ0PlVMLx6bGgKHUfjBF1eKyQjMtOpCPrBrd2oxI"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,7 +43,8 @@ function buildAndShowDropModal(storageKey) {
   )}&title=${encodeURIComponent(NEW_DROP_CONFIG.bookingTitle)}`;
 
   const coverMedia = NEW_DROP_CONFIG.image
-    ? `<img src="${NEW_DROP_CONFIG.image}" alt="${NEW_DROP_CONFIG.title}" class="drop-cover-img" />`
+    ? `<img src="${NEW_DROP_CONFIG.image}" alt="${NEW_DROP_CONFIG.title}" class="drop-cover-img" />
+       <div class="drop-watermark" style="display: none;">${NEW_DROP_CONFIG.highlight}</div>`
     : `<div class="drop-watermark">${NEW_DROP_CONFIG.highlight}</div>`;
 
   const backdrop = document.createElement("div");
@@ -92,6 +92,16 @@ function buildAndShowDropModal(storageKey) {
 
   document.body.appendChild(backdrop);
 
+  // Automatic fallback if external image token expires or fails
+  const coverImg = backdrop.querySelector(".drop-cover-img");
+  if (coverImg) {
+    coverImg.addEventListener("error", () => {
+      coverImg.style.display = "none";
+      const watermark = backdrop.querySelector(".drop-watermark");
+      if (watermark) watermark.style.display = "flex";
+    });
+  }
+
   const closeModal = () => {
     backdrop.classList.remove("open");
     document.body.style.overflow = "";
@@ -101,7 +111,6 @@ function buildAndShowDropModal(storageKey) {
     setTimeout(() => backdrop.remove(), 350);
   };
 
-  // Smooth entrance 550ms after landing
   setTimeout(() => {
     backdrop.classList.add("open");
     document.body.style.overflow = "hidden";
