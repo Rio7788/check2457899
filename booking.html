@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=7" />
 </head>
 <body>
   <div class="page-transition"></div>
@@ -65,7 +65,7 @@
 
         <div class="booking-layout">
           <!-- 3-Step Reservation Wizard Form -->
-          <div class="glass-panel booking-card">
+          <div class="glass-panel booking-card booking-wizard-card">
             <!-- Top Progress Stepper Bar -->
             <div class="booking-stepper" role="tablist" aria-label="Booking Steps">
               <div class="stepper-track" aria-hidden="true">
@@ -97,7 +97,7 @@
               </button>
             </div>
 
-            <form id="reservationForm" novalidate>
+            <form id="reservationForm" class="wizard-form" novalidate>
               <div class="wizard-steps-viewport">
                 <!-- STEP 1: Your Details -->
                 <div class="wizard-step active" data-step-panel="1">
@@ -118,13 +118,13 @@
                       </div>
                     </div>
 
-                    <p id="step1Error" class="form-error" style="margin-top: 1rem;">
+                    <p id="step1Error" class="form-error">
                       <i class="fa-solid fa-circle-exclamation"></i> Please enter your Full Name and WhatsApp / Phone Number to continue.
                     </p>
                   </div>
 
                   <div class="wizard-nav wizard-nav-end">
-                    <button type="button" id="step1NextBtn" class="btn btn-gold wizard-btn-full">
+                    <button type="button" id="step1NextBtn" class="btn btn-gold wizard-btn-primary">
                       Next <i class="fa-solid fa-arrow-right"></i>
                     </button>
                   </div>
@@ -161,7 +161,7 @@
                       </div>
                     </div>
 
-                    <p id="step2Error" class="form-error" style="margin-top: 1rem;">
+                    <p id="step2Error" class="form-error">
                       <i class="fa-solid fa-circle-exclamation"></i> Please select an experience category before continuing.
                     </p>
                   </div>
@@ -170,7 +170,7 @@
                     <button type="button" class="btn btn-outline wizard-prev-btn" data-prev-step="1">
                       <i class="fa-solid fa-arrow-left"></i> Back
                     </button>
-                    <button type="button" id="step2NextBtn" class="btn btn-gold wizard-next-flex">
+                    <button type="button" id="step2NextBtn" class="btn btn-gold wizard-next-btn">
                       Next <i class="fa-solid fa-arrow-right"></i>
                     </button>
                   </div>
@@ -179,7 +179,7 @@
                 <!-- STEP 3: Date & Confirm -->
                 <div class="wizard-step" data-step-panel="3">
                   <div class="wizard-step-fields">
-                    <div class="form-grid form-grid-2" style="margin-bottom: 1.15rem;">
+                    <div class="form-grid form-grid-2">
                       <div class="form-group">
                         <label for="preferredDate" class="form-label">
                           <i class="fa-regular fa-calendar"></i> Preferred Date
@@ -201,7 +201,7 @@
                       </div>
                     </div>
 
-                    <div class="form-grid">
+                    <div class="form-grid" style="margin-top: 1rem;">
                       <div class="form-group">
                         <label for="peopleCount" class="form-label">
                           <i class="fa-solid fa-users"></i> Number of Guests
@@ -217,7 +217,7 @@
                       </div>
                     </div>
 
-                    <p id="formError" class="form-error" style="margin-top: 1rem;">
+                    <p id="formError" class="form-error">
                       <i class="fa-solid fa-circle-exclamation"></i> Please select a Preferred Date, Time Slot, and Number of Guests.
                     </p>
                   </div>
@@ -226,7 +226,7 @@
                     <button type="button" class="btn btn-outline wizard-prev-btn" data-prev-step="2">
                       <i class="fa-solid fa-arrow-left"></i> Back
                     </button>
-                    <button type="submit" class="btn btn-gold wizard-next-flex">
+                    <button type="submit" class="btn btn-gold wizard-next-btn">
                       <i class="fa-brands fa-whatsapp"></i> Book via WhatsApp
                     </button>
                   </div>
@@ -235,7 +235,7 @@
             </form>
           </div>
 
-          <!-- Concierge Information Panel (Original) -->
+          <!-- Concierge Information Panel -->
           <aside class="glass-panel summary-card">
             <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Arena Concierge</h2>
             <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.25rem;">
@@ -292,12 +292,6 @@
     </div>
   </footer>
 
-  <!-- Floating Action Component (Direct WhatsApp Chat on Booking Page) -->
-  <a href="https://wa.me/94706821331" target="_blank" rel="noopener noreferrer" class="floating-action" aria-label="Chat on WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span>WhatsApp</span>
-  </a>
-
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=7"></script>
 </body>
 </html>
