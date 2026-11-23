@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reservations |Royal Arena - Badulla</title>
-  <meta name="description" content="Book your PS5 gaming session, private movie screening, or VIP birthday party directly via WhatsApp atRoyal Arena, Badulla." />
+  <title>Reservations | Royal Arena - Badulla</title>
+  <meta name="description" content="Book your PS5 gaming session, private movie screening, or VIP birthday party directly via WhatsApp at Royal Arena, Badulla." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
       <a href="index.html" class="brand-logo">
         <div class="brand-mark"><i class="fa-solid fa-crown"></i></div>
         <div class="brand-text">
-          <span class="brand-title"> Royal Arena</span>
+          <span class="brand-title">Royal Arena</span>
           <span class="brand-subtitle">Gaming &amp; Movies • Badulla</span>
         </div>
       </a>
@@ -43,6 +43,7 @@
     </div>
   </header>
 
+  <!-- Mobile Navigation Drawer -->
   <div id="mobileDrawer" class="mobile-drawer">
     <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
     <a href="gaming.html" class="mobile-nav-link">PS5 Gaming <i class="fa-solid fa-chevron-right"></i></a>
@@ -62,141 +63,290 @@
           </div>
           <h1 class="section-title">Reserve Your Arena Slot</h1>
           <p class="section-subtitle">
-            Complete your preferences below. Submitting sends your formatted reservation directly to our Badulla concierge via WhatsApp.
+            Complete 3 quick steps below. Your formatted booking ticket is sent directly to our Badulla concierge via WhatsApp.
           </p>
         </div>
 
         <div class="booking-layout">
-          <!-- Reservation Form -->
-          <div class="glass-panel booking-card">
-            <form id="reservationForm" novalidate>
-              <div class="form-grid form-grid-2" style="margin-bottom: 1.25rem;">
-                <div class="form-group">
-                  <label for="fullName" class="form-label">
-                    <i class="fa-solid fa-user"></i> Full Name
-                  </label>
-                  <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required />
-                </div>
+          <!-- 3-Step Reservation Wizard Card -->
+          <div class="glass-panel booking-card wizard-shell">
+            <!-- Pre-selected Choice Banner (Shown automatically when arriving from Games/Movies/Popup) -->
+            <div id="prefillNotice" class="prefill-notice" style="display: none;">
+              <i class="fa-solid fa-bolt"></i>
+              <span id="prefillText">Pre-selected item loaded</span>
+            </div>
 
-                <div class="form-group">
-                  <label for="mobileNumber" class="form-label">
-                    <i class="fa-solid fa-mobile-screen"></i> Mobile Number
-                  </label>
-                  <input type="tel" id="mobileNumber" class="form-control" placeholder="e.g., 07X XXX XXXX" required />
-                </div>
+            <!-- Step Progress Bar -->
+            <div class="wizard-stepper" aria-label="Booking Progress">
+              <div class="wizard-track">
+                <div id="wizardTrackFill" class="wizard-track-fill"></div>
               </div>
 
-              <div class="form-grid form-grid-2" style="margin-bottom: 1.25rem;">
-                <div class="form-group">
-                  <label for="serviceType" class="form-label">
-                    <i class="fa-solid fa-layer-group"></i> Service Type
-                  </label>
-                  <select id="serviceType" class="form-control">
-                    <option value="Gaming Session">Gaming Session</option>
-                    <option value="Movie Package">Movie Package</option>
-                    <option value="Birthday Package">Birthday Package</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="peopleCount" class="form-label">
-                    <i class="fa-solid fa-users"></i> Number of People
-                  </label>
-                  <select id="peopleCount" class="form-control"></select>
-                </div>
-              </div>
-
-              <div class="form-grid" style="margin-bottom: 1.25rem;">
-                <div class="form-group" id="durationGroup">
-                  <label for="duration" class="form-label">
-                    <i class="fa-regular fa-clock"></i> Package Duration
-                  </label>
-                  <select id="duration" class="form-control"></select>
-                </div>
-
-                <div class="form-group">
-                  <label for="selectionTitle" id="selectionTitleLabel" class="form-label">
-                    <i class="fa-solid fa-gamepad"></i> Preferred Game / Movie / Details
-                  </label>
-                  <input type="text" id="selectionTitle" class="form-control" placeholder="Specify your game, movie, or custom request" />
-                </div>
-              </div>
-
-              <div class="form-grid form-grid-2" style="margin-bottom: 1.25rem;">
-                <div class="form-group">
-                  <label for="preferredDate" class="form-label">
-                    <i class="fa-regular fa-calendar"></i> Preferred Date
-                  </label>
-                  <input type="date" id="preferredDate" class="form-control" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="timeSlot" class="form-label">
-                    <i class="fa-solid fa-clock"></i> Preferred Time Slot
-                  </label>
-                  <select id="timeSlot" class="form-control" required>
-                    <option value="10:00 AM - 12:30 PM">10:00 AM - 12:30 PM</option>
-                    <option value="12:30 PM - 03:00 PM">12:30 PM - 03:00 PM</option>
-                    <option value="03:00 PM - 05:30 PM">03:00 PM - 05:30 PM</option>
-                    <option value="05:30 PM - 08:00 PM">05:30 PM - 08:00 PM</option>
-                    <option value="08:00 PM - 10:30 PM">08:00 PM - 10:30 PM</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group" style="margin-bottom: 1.5rem;">
-                <label for="additionalNotes" class="form-label">
-                  <i class="fa-regular fa-comment-dots"></i> Special Requests (Optional)
-                </label>
-                <textarea id="additionalNotes" class="form-control" placeholder="Any custom movie download request, controller count, or birthday decor theme..."></textarea>
-              </div>
-
-              <p id="formError" class="form-error" style="margin-bottom: 1rem;">
-                <i class="fa-solid fa-circle-exclamation"></i> Please fill in your Full Name, Mobile Number, and Preferred Date before submitting.
-              </p>
-
-              <button type="submit" class="btn btn-gold" style="width: 100%; font-size: 1.02rem;">
-                <i class="fa-brands fa-whatsapp"></i> Confirm &amp; Send via WhatsApp
+              <button type="button" class="step-node active" data-step-target="1">
+                <span class="step-circle">
+                  <span class="step-num">1</span>
+                  <i class="fa-solid fa-check step-check"></i>
+                </span>
+                <span class="step-label">Guest Info</span>
               </button>
+
+              <button type="button" class="step-node" data-step-target="2" disabled>
+                <span class="step-circle">
+                  <span class="step-num">2</span>
+                  <i class="fa-solid fa-check step-check"></i>
+                </span>
+                <span class="step-label">Experience</span>
+              </button>
+
+              <button type="button" class="step-node" data-step-target="3" disabled>
+                <span class="step-circle">
+                  <span class="step-num">3</span>
+                  <i class="fa-solid fa-check step-check"></i>
+                </span>
+                <span class="step-label">Date &amp; Time</span>
+              </button>
+            </div>
+
+            <!-- Animated Step-Complete Overlay -->
+            <div id="stepSuccessOverlay" class="step-success-overlay" aria-hidden="true">
+              <div class="tick-badge">
+                <svg class="tick-svg" viewBox="0 0 52 52">
+                  <circle class="tick-circle" cx="26" cy="26" r="24" fill="none" />
+                  <path class="tick-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+              </div>
+              <p id="stepSuccessText" class="step-success-text">Step Completed</p>
+            </div>
+
+            <form id="reservationForm" novalidate>
+              <!-- STEP 1: Full Name & Mobile Number -->
+              <div class="wizard-pane active" data-step="1">
+                <div class="step-heading">
+                  <span class="step-kicker">Step 1 of 3</span>
+                  <h2>Who Is Booking?</h2>
+                  <p>Enter your contact details so our concierge can confirm your slot.</p>
+                </div>
+
+                <div class="form-grid" style="margin-bottom: 1.5rem;">
+                  <div class="form-group">
+                    <label for="fullName" class="form-label">
+                      <i class="fa-solid fa-user"></i> Full Name
+                    </label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" autocomplete="name" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="mobileNumber" class="form-label">
+                      <i class="fa-solid fa-mobile-screen"></i> Mobile Number (WhatsApp)
+                    </label>
+                    <input type="tel" id="mobileNumber" class="form-control" placeholder="e.g., 070 682 1331" autocomplete="tel" required />
+                  </div>
+                </div>
+
+                <p id="errorStep1" class="form-error" style="margin-bottom: 1rem;">
+                  <i class="fa-solid fa-circle-exclamation"></i> Please enter your full name and a valid mobile number (at least 9 digits).
+                </p>
+
+                <div class="wizard-actions single">
+                  <button type="button" id="nextToStep2" class="btn btn-gold" style="width: 100%;">
+                    Continue to Experience <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Service Type, People, Duration, Game/Movie -->
+              <div class="wizard-pane" data-step="2">
+                <div class="step-heading">
+                  <span class="step-kicker">Step 2 of 3</span>
+                  <h2>Customize Your Experience</h2>
+                  <p>Choose your service, group size, duration, and preferred title.</p>
+                </div>
+
+                <div class="form-grid form-grid-2" style="margin-bottom: 1.15rem;">
+                  <div class="form-group">
+                    <label for="serviceType" class="form-label">
+                      <i class="fa-solid fa-layer-group"></i> Service Type
+                    </label>
+                    <select id="serviceType" class="form-control">
+                      <option value="Gaming Session">Gaming Session</option>
+                      <option value="Movie Package">Movie Package</option>
+                      <option value="Birthday Package">Birthday Package</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="peopleCount" class="form-label">
+                      <i class="fa-solid fa-users"></i> Number of People
+                    </label>
+                    <select id="peopleCount" class="form-control"></select>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="margin-bottom: 1.5rem;">
+                  <div class="form-group" id="durationGroup">
+                    <label for="duration" class="form-label">
+                      <i class="fa-regular fa-clock"></i> Package Duration
+                    </label>
+                    <select id="duration" class="form-control"></select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="selectionTitle" id="selectionTitleLabel" class="form-label">
+                      <i class="fa-solid fa-gamepad"></i> Preferred PS5 Game
+                    </label>
+                    <input type="text" id="selectionTitle" class="form-control" placeholder="e.g., Grand Theft Auto VI (GTA 6)" />
+                  </div>
+                </div>
+
+                <p id="errorStep2" class="form-error" style="margin-bottom: 1rem;">
+                  <i class="fa-solid fa-circle-exclamation"></i> Please select your service options before continuing.
+                </p>
+
+                <div class="wizard-actions">
+                  <button type="button" class="btn btn-outline wizard-back" data-prev="1">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                  </button>
+                  <button type="button" id="nextToStep3" class="btn btn-gold" style="flex: 1;">
+                    Continue to Schedule <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Preferred Date, Time Slot & Special Requests -->
+              <div class="wizard-pane" data-step="3">
+                <div class="step-heading">
+                  <span class="step-kicker">Step 3 of 3</span>
+                  <h2>Select Date &amp; Time</h2>
+                  <p>Lock in your preferred slot and add any special requests.</p>
+                </div>
+
+                <div class="form-grid form-grid-2" style="margin-bottom: 1.15rem;">
+                  <div class="form-group">
+                    <label for="preferredDate" class="form-label">
+                      <i class="fa-regular fa-calendar"></i> Preferred Date
+                    </label>
+                    <input type="date" id="preferredDate" class="form-control" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="timeSlot" class="form-label">
+                      <i class="fa-solid fa-clock"></i> Preferred Time Slot
+                    </label>
+                    <select id="timeSlot" class="form-control" required>
+                      <option value="10:00 AM - 12:30 PM">10:00 AM - 12:30 PM</option>
+                      <option value="12:30 PM - 03:00 PM">12:30 PM - 03:00 PM</option>
+                      <option value="03:00 PM - 05:30 PM">03:00 PM - 05:30 PM</option>
+                      <option value="05:30 PM - 08:00 PM">05:30 PM - 08:00 PM</option>
+                      <option value="08:00 PM - 10:30 PM">08:00 PM - 10:30 PM</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label for="additionalNotes" class="form-label">
+                    <i class="fa-regular fa-comment-dots"></i> Special Requests (Optional)
+                  </label>
+                  <textarea id="additionalNotes" class="form-control" placeholder="Any custom movie download request, controller count, or birthday decor theme..."></textarea>
+                </div>
+
+                <p id="errorStep3" class="form-error" style="margin-bottom: 1rem;">
+                  <i class="fa-solid fa-circle-exclamation"></i> Please choose your preferred date and time slot.
+                </p>
+
+                <div class="wizard-actions">
+                  <button type="button" class="btn btn-outline wizard-back" data-prev="2">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                  </button>
+                  <button type="submit" class="btn btn-gold" style="flex: 1;">
+                    <i class="fa-brands fa-whatsapp"></i> Confirm &amp; Send via WhatsApp
+                  </button>
+                </div>
+              </div>
+
+              <!-- FINAL CONFIRMATION STATE (Shown right after WhatsApp opens) -->
+              <div id="wizardFinalDone" class="wizard-final-done" style="display: none;">
+                <div class="tick-badge large">
+                  <svg class="tick-svg" viewBox="0 0 52 52">
+                    <circle class="tick-circle" cx="26" cy="26" r="24" fill="none" />
+                    <path class="tick-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                  </svg>
+                </div>
+                <h2>Reservation Ticket Ready</h2>
+                <p>Your booking details have been formatted for WhatsApp. If WhatsApp didn't open automatically, tap the button below.</p>
+                <div class="wizard-actions" style="flex-direction: column; width: 100%;">
+                  <a id="manualWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="width: 100%;">
+                    <i class="fa-brands fa-whatsapp"></i> Open WhatsApp Ticket
+                  </a>
+                  <button type="button" id="resetWizardBtn" class="btn btn-outline btn-sm" style="width: 100%;">
+                    <i class="fa-solid fa-rotate-left"></i> Make Another Booking
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
 
-          <!-- Concierge Information Panel -->
+          <!-- Live Reservation Ticket & Concierge Sidebar -->
           <aside class="glass-panel summary-card">
-            <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Arena Concierge</h2>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.25rem;">
-              Private slots are allocated on a first-come basis. Submitting opens WhatsApp with your complete booking ticket pre-filled.
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h2 style="font-size: 1.35rem;">Live Booking Ticket</h2>
+              <span class="ticket-status-pill"><i class="fa-solid fa-circle"></i> Live</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.15rem;">
+              Updates automatically as you complete each step.
             </p>
 
-            <div class="summary-row">
-              <i class="fa-solid fa-location-dot"></i>
-              <div>
-                <strong style="display: block; font-size: 0.92rem;">Location</strong>
-                <span style="color: var(--text-secondary); font-size: 0.88rem;"> Royal Arena, Badulla</span>
+            <div class="ticket-checklist">
+              <div class="ticket-item" id="ticketStep1">
+                <div class="ticket-icon"><i class="fa-solid fa-user"></i></div>
+                <div class="ticket-info">
+                  <span class="ticket-label">1. Guest Details</span>
+                  <strong class="ticket-value" id="ticketGuestValue">Pending...</strong>
+                </div>
+                <i class="fa-solid fa-circle-check ticket-done-icon"></i>
+              </div>
+
+              <div class="ticket-item" id="ticketStep2">
+                <div class="ticket-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="ticket-info">
+                  <span class="ticket-label">2. Arena Experience</span>
+                  <strong class="ticket-value" id="ticketExpValue">Pending...</strong>
+                </div>
+                <i class="fa-solid fa-circle-check ticket-done-icon"></i>
+              </div>
+
+              <div class="ticket-item" id="ticketStep3">
+                <div class="ticket-icon"><i class="fa-regular fa-calendar"></i></div>
+                <div class="ticket-info">
+                  <span class="ticket-label">3. Preferred Schedule</span>
+                  <strong class="ticket-value" id="ticketDateValue">Pending...</strong>
+                </div>
+                <i class="fa-solid fa-circle-check ticket-done-icon"></i>
               </div>
             </div>
 
-            <div class="summary-row">
-              <i class="fa-brands fa-whatsapp"></i>
-              <div>
-                <strong style="display: block; font-size: 0.92rem;">Direct Booking Hotline</strong>
-                <span style="color: var(--text-secondary); font-size: 0.88rem;">+94 70 682 1331</span>
+            <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-glass);">
+              <div class="summary-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <strong style="display: block; font-size: 0.9rem;">Location</strong>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Royal Arena, Badulla</span>
+                </div>
               </div>
-            </div>
 
-            <div class="summary-row">
-              <i class="fa-solid fa-cake-candles"></i>
-              <div>
-                <strong style="display: block; font-size: 0.92rem;">Birthday Package Highlight</strong>
-                <span style="color: var(--text-secondary); font-size: 0.88rem;">Rs. 5,500 — Guitar, JBL Karaoke, PS5 &amp; Pro Decor</span>
+              <div class="summary-row">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div>
+                  <strong style="display: block; font-size: 0.9rem;">Direct Hotline</strong>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">+94 70 682 1331</span>
+                </div>
               </div>
-            </div>
 
-            <div class="summary-row">
-              <i class="fa-solid fa-cloud-arrow-down"></i>
-              <div>
-                <strong style="display: block; font-size: 0.92rem;">Custom Movie Requests</strong>
-                <span style="color: var(--text-secondary); font-size: 0.88rem;">Book at least 12 hours ahead for custom movie downloads.</span>
+              <div class="summary-row">
+                <i class="fa-solid fa-cake-candles"></i>
+                <div>
+                  <strong style="display: block; font-size: 0.9rem;">Birthday VIP Setup</strong>
+                  <span style="color: var(--text-secondary); font-size: 0.85rem;">Rs. 5,500 — Guitar, JBL Karaoke, PS5 &amp; Decor</span>
+                </div>
               </div>
             </div>
           </aside>
@@ -208,7 +358,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-meta">
-        &copy; 2025 <strong> Royal Arena (Gaming &amp; Movies)</strong> — Badulla.
+        &copy; 2026 <strong>Royal Arena (Gaming &amp; Movies)</strong> — Badulla.
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
