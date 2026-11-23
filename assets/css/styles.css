@@ -1,5 +1,7 @@
 /* ==========================================================================
-   ROYAL ARENA - COMPLETE LUXURY DESIGN SYSTEM
+   ROYAL ARENA - LUXURY DESIGN SYSTEM (MOBILE-FIRST HARDENED)
+   Palette: Deep Obsidian (#050505), Midnight Navy (#0B0F19),
+            Luxury Gold (#D4AF37), Electric Neon Blue (#00D2FF)
    ========================================================================== */
 
 :root {
@@ -119,7 +121,7 @@ ul {
 }
 
 /* ==========================================================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION (Mobile-First Fixed)
    ========================================================================== */
 .site-header {
   position: sticky;
@@ -250,6 +252,7 @@ ul {
   border-radius: 2px;
 }
 
+/* Higher specificity so .btn does not override display: none on mobile */
 .site-header .nav-cta {
   display: none;
 }
@@ -1019,6 +1022,7 @@ ul {
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.55);
 }
 
+/* Bespoke Cinematic Poster Artwork Container */
 .poster-art {
   position: relative;
   aspect-ratio: 3 / 4;
@@ -1139,6 +1143,7 @@ ul {
   }
 }
 
+/* Custom Movie Request Notice */
 .notice-box {
   margin-top: 2.5rem;
   padding: 1.5rem;
@@ -1162,7 +1167,7 @@ ul {
 }
 
 /* ==========================================================================
-   BOOKING FORM BASE
+   BOOKING FORM
    ========================================================================== */
 .booking-layout {
   display: grid;
@@ -1184,7 +1189,7 @@ ul {
 
 @media (min-width: 768px) {
   .booking-card {
-    padding: 2.5rem;
+    padding: 2.75rem;
   }
 }
 
@@ -1477,6 +1482,7 @@ textarea.form-control {
   }
 }
 
+/* Enhanced visible float motion for both Mobile & PC */
 @keyframes floatCrown {
   0%, 100% {
     transform: translate3d(0, 4px, 0) rotate(-1deg);
@@ -1506,6 +1512,7 @@ textarea.form-control {
 
 /* ==========================================================================
    MOBILE-ONLY HERO REORDER (Under 960px — PC View Unchanged)
+   Order: Title -> Tagline -> Floating 3D Showcase -> Description -> Cards
    ========================================================================== */
 @media (max-width: 959px) {
   .hero {
@@ -1554,7 +1561,7 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   DESKTOP 2-COLUMN SPLIT HERO (960px+)
+   DESKTOP 2-COLUMN SPLIT HERO & PC FLOATING FIX (960px+)
    ========================================================================== */
 @media (min-width: 960px) {
   .hero {
@@ -1831,29 +1838,9 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   3-STEP BOOKING WIZARD, ANIMATED SVG CHECKMARK & LIVE TICKET
+   BOOKING PAGE: 3-STEP MULTI-STEP WIZARD
    ========================================================================== */
-.wizard-shell {
-  position: relative;
-  overflow: hidden;
-}
-
-.prefill-notice {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
-  border-radius: var(--radius-pill);
-  background: var(--neon-blue-dim);
-  border: 1px solid var(--border-neon);
-  color: var(--neon-blue);
-  font-size: 0.78rem;
-  font-weight: 700;
-  margin-bottom: 1.35rem;
-  max-width: 100%;
-}
-
-.wizard-stepper {
+.booking-stepper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1861,340 +1848,176 @@ textarea.form-control {
   margin-bottom: 2rem;
 }
 
-.wizard-track {
+.stepper-track {
   position: absolute;
-  top: 19px;
-  left: 16%;
-  right: 16%;
+  top: 20px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
   height: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
   z-index: 0;
   overflow: hidden;
 }
 
-.wizard-track-fill {
+.stepper-progress {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #10b981 0%, var(--gold-primary) 100%);
-  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(90deg, #10b981 0%, var(--neon-blue) 100%);
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.45);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.step-node {
+.stepper-item {
   position: relative;
   z-index: 1;
-  background: none;
+  background: transparent;
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   cursor: pointer;
   font-family: inherit;
   color: var(--text-muted);
   transition: color var(--transition-fast);
 }
 
-.step-node:disabled {
+.stepper-item:disabled {
   cursor: default;
 }
 
-.step-circle {
-  width: 40px;
-  height: 40px;
+.stepper-circle {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: #0b0f19;
+  background: var(--bg-secondary);
   border: 2px solid rgba(255, 255, 255, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Outfit', sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 0.95rem;
-  color: var(--text-secondary);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.step-check {
+.step-check-icon {
   display: none;
   font-size: 0.95rem;
 }
 
-.step-label {
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+.stepper-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-align: center;
+  line-height: 1.25;
 }
 
-.step-node.active {
-  color: var(--gold-primary);
+/* Active Step: Neon Accent Glow & Bold Text */
+.stepper-item.active {
+  color: var(--text-primary);
 }
 
-.step-node.active .step-circle {
-  border-color: var(--gold-primary);
-  color: var(--gold-primary);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.32);
+.stepper-item.active .stepper-label {
+  font-weight: 700;
+  color: var(--neon-blue);
+}
+
+.stepper-item.active .stepper-circle {
+  border-color: var(--neon-blue);
+  color: var(--neon-blue);
+  background: rgba(0, 210, 255, 0.12);
+  box-shadow: 0 0 18px rgba(0, 210, 255, 0.4);
   transform: scale(1.06);
 }
 
-.step-node.completed {
-  color: #10b981;
+/* Completed Step: Green/Accent Checkmark */
+.stepper-item.completed {
+  color: #34d399;
 }
 
-.step-node.completed .step-circle {
+.stepper-item.completed .stepper-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.stepper-item.completed .stepper-circle {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   border-color: #34d399;
   color: #ffffff;
-  box-shadow: 0 0 22px rgba(16, 185, 129, 0.4);
-  animation: popCheck 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
 }
 
-.step-node.completed .step-num {
+.stepper-item.completed .step-number {
   display: none;
 }
 
-.step-node.completed .step-check {
+.stepper-item.completed .step-check-icon {
   display: block;
 }
 
-.wizard-pane {
+/* Consistent Height Container to Prevent Mobile Layout Jump */
+.wizard-steps-viewport {
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .wizard-steps-viewport {
+    min-height: 365px;
+  }
+}
+
+.wizard-step {
   display: none;
-  animation: slideStepIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
 }
 
-.wizard-pane.active {
-  display: block;
+.wizard-step.active {
+  display: flex;
+  animation: wizardStepFadeSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.step-heading {
-  margin-bottom: 1.5rem;
-}
-
-.step-kicker {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--neon-blue);
-  margin-bottom: 0.35rem;
-}
-
-.step-heading h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.step-heading p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-.wizard-actions {
+.wizard-nav {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  padding-top: 0.5rem;
 }
 
-.step-success-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  background: rgba(5, 5, 5, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.85rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.22s ease;
+.wizard-nav-end {
+  justify-content: flex-end;
 }
 
-.step-success-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.tick-badge {
-  width: 68px;
-  height: 68px;
-}
-
-.tick-badge.large {
-  width: 78px;
-  height: 78px;
-  margin-bottom: 0.5rem;
-}
-
-.tick-svg {
+.wizard-btn-full {
   width: 100%;
-  height: 100%;
-  display: block;
 }
 
-.tick-circle {
-  stroke: #10b981;
-  stroke-width: 3;
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  animation: strokeDraw 0.45s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-.tick-path {
-  stroke: var(--gold-light);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: strokeDraw 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.24s forwards;
-}
-
-.step-success-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-}
-
-.wizard-final-done {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1rem 0;
-  gap: 0.75rem;
-  animation: slideStepIn 0.4s ease;
-}
-
-.wizard-final-done p {
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  max-width: 400px;
-  margin-bottom: 0.75rem;
-}
-
-/* Live Ticket Sidebar */
-.ticket-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.28rem 0.7rem;
-  border-radius: var(--radius-pill);
-  background: rgba(16, 185, 129, 0.14);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #34d399;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.ticket-status-pill i {
-  font-size: 0.45rem;
-}
-
-.ticket-checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.ticket-item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 0.85rem 0.95rem;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-glass);
-  transition: border-color var(--transition-fast), background var(--transition-fast);
-}
-
-.ticket-item.done {
-  border-color: rgba(16, 185, 129, 0.4);
-  background: rgba(16, 185, 129, 0.07);
-}
-
-.ticket-icon {
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--gold-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-}
-
-.ticket-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+.wizard-next-flex {
   flex: 1;
 }
 
-.ticket-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.ticket-value {
-  font-size: 0.86rem;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ticket-done-icon {
-  color: #10b981;
-  font-size: 1.05rem;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.ticket-item.done .ticket-done-icon {
-  opacity: 1;
-  transform: scale(1);
-}
-
-@keyframes strokeDraw {
-  100% {
-    stroke-dashoffset: 0;
+@media (min-width: 640px) {
+  .wizard-btn-full {
+    width: auto;
+    min-width: 170px;
   }
 }
 
-@keyframes popCheck {
-  0% {
-    transform: scale(0.8);
-  }
-  60% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes slideStepIn {
+@keyframes wizardStepFadeSlide {
   from {
     opacity: 0;
-    transform: translateX(14px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
