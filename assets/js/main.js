@@ -1,5 +1,5 @@
 /**
- * RA ROYAL ARENA - Core Interactive Controller
+ * ROYAL ARENA - Core Interactive Controller
  * Handles mobile navigation, smooth page transitions,
  * and the 3-Step Booking Wizard with WhatsApp API dispatch.
  */
@@ -289,7 +289,7 @@ function initBookingForm() {
     goToStep(3);
 
     const messageLines = [
-      "*RA ROYAL ARENA - NEW RESERVATION*",
+      "*ROYAL ARENA - NEW RESERVATION*",
       "--------------------------------",
       `*Name:* ${fullName}`,
       `*Mobile:* ${mobile}`,
@@ -301,7 +301,7 @@ function initBookingForm() {
       `*Time Slot:* ${timeSlot}`,
       notes ? `*Extra Notes:* ${notes}` : null,
       "--------------------------------",
-      "Sent via RA Royal Arena Badulla Official Portal"
+      "Sent via ROYAL ARENA Badulla Official Portal"
     ].filter(Boolean);
 
     const encodedText = encodeURIComponent(messageLines.join("\n"));
