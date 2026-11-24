@@ -1294,55 +1294,136 @@ textarea.form-control {
 }
 
 /* ==========================================================================
-   MINIMAL CORPORATE FOOTER
+   3-COLUMN LUXURY CORPORATE FOOTER
    ========================================================================== */
 .site-footer {
   margin-top: auto;
   border-top: 1px solid var(--border-glass);
-  background: rgba(5, 5, 5, 0.9);
-  padding: 2rem 0 5rem;
+  background: rgba(5, 5, 5, 0.94);
+  padding: 3rem 0 5.25rem;
 }
 
 @media (min-width: 768px) {
   .site-footer {
-    padding: 2.5rem 0;
+    padding: 3.75rem 0 2.25rem;
   }
 }
 
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  padding-bottom: 2.5rem;
 }
 
 @media (min-width: 768px) {
-  .footer-inner {
-    flex-direction: row;
-    text-align: left;
+  .footer-grid {
+    grid-template-columns: 1.45fr 0.85fr 1fr;
+    gap: 3rem;
+    align-items: start;
   }
 }
 
-.footer-meta {
-  font-size: 0.84rem;
-  color: var(--text-muted);
+.footer-brand .brand-logo {
+  margin-bottom: 1rem;
 }
 
-.footer-links {
+.footer-bio {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 340px;
+}
+
+.footer-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.footer-nav,
+.footer-contact {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.25rem;
-  font-size: 0.86rem;
+  flex-direction: column;
+  gap: 0.72rem;
+}
+
+.footer-nav a {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-nav a:hover {
+  color: var(--gold-primary);
+  transform: translateX(3px);
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
-.footer-links a:hover {
-  color: var(--gold-primary);
+.footer-contact i {
+  width: 16px;
+  text-align: center;
+  color: var(--neon-blue);
+  font-size: 0.92rem;
+  flex-shrink: 0;
 }
 
+.footer-contact a:hover {
+  color: var(--text-primary);
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-blue);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+  background: rgba(212, 175, 55, 0.14);
+  border-color: var(--border-gold);
+  color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-glass);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    text-align: left;
+  }
+}
 /* ==========================================================================
    FLOATING PULSATING BOOK NOW / WHATSAPP ACTION BUTTON
    ========================================================================== */
